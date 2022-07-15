@@ -1,20 +1,42 @@
 {
-	"manifest_version": 2,
-	"name": "Cheat Sheet Extension",
-	"description": "Маленький помошник в прохождении тестов в браузере",
-	"version": "1.0.0",
-  "browser_action": {
-		"default_icon": "icon_128.png",
-		"default_popup": "index.html"
-	},
-    "icons": {"128": "icon_128.png"},
-	"permissions": ["activeTab"],
+    "name": "Cheat Sheet Extension",
+    "description": "Simlple google chrome extension to solve test.",
+    "version": "1.0.0",
+	"manifest_version": 3,
+    "background": {
+        "service_worker": "init.js",
+        "type": "module"
+    },
+    "permissions": ["storage", "activeTab", "scripting"],
     "content_scripts": [
         {
-          "matches": [
-            "<all_urls>"
-          ],
-          "js": ["index.js"]
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": ["src/index.js"]
         }
-      ]
+    ],
+"web_accessible_resources": [
+        {
+            "resources": ["databases/default.json"],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+          "16": "/images/get_started16.png",
+          "32": "/images/get_started32.png",
+          "48": "/images/get_started48.png",
+          "128": "/images/get_started128.png"
+        }
+    },
+    "icons": {
+        "16": "/images/get_started16.png",
+        "32": "/images/get_started32.png",
+        "48": "/images/get_started48.png",
+        "128": "/images/get_started128.png"
+    }
 }
