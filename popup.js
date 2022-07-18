@@ -1,12 +1,6 @@
 const fileInput = document.getElementById('file_input');
 const clearButton = document.getElementById('clear_button');
 
-const logFile = (event) => {
-	let str = event.target.result;
-	let json = JSON.parse(str);
-    mergeNewDatabase(json);
-}
-
 const mergeNewDatabase = (newJson) => {
     chrome.storage.local.get(['cheatSheetExtensionDatabase'], (result) => {
         const oldDatabase = result.cheatSheetExtensionDatabase;
@@ -15,23 +9,23 @@ const mergeNewDatabase = (newJson) => {
 
         chrome.storage.local.set({ cheatSheetExtensionDatabase }, () => {
             console.log('Database updated successfully.');
-            console.log('json', cheatSheetExtensionDatabase);
         });
     });
 }
 
 fileInput.onchange = function() {
   const selectedFiles = [...fileInput.files];
-  console.log(selectedFiles);
 
-  const jsons = selectedFiles.map((file) => {
-      if (!file) return;
+  selectedFiles.forEach((file) => {
+    if (!file) return;
 
-      let reader = new FileReader();
+    let reader = new FileReader();
 
-      reader.onload = logFile;
+    reader.onload = (event) => {
+        mergeNewDatabase(JSON.parse(event.target.result));
+    };
 
-      reader.readAsText(file);
+    reader.readAsText(file);
   });
 }
 
@@ -52,7 +46,6 @@ clearButton.onclick = async function() {
                 chrome.storage.local.set({ cheatSheetExtensionDatabase }, function() {
                     console.log('Default database load successfully.');
                 });
-                console.log(`Default database: ${JSON.stringify(cheatSheetExtensionDatabase)}`);
             });
         }
     )

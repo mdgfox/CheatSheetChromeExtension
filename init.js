@@ -13,7 +13,6 @@ chrome.runtime.onInstalled.addListener(() => {
                 chrome.storage.local.set({ cheatSheetExtensionDatabase }, function() {
                     console.log('Default database load successfully.');
                 });
-                console.log(`Default database: ${JSON.stringify(cheatSheetExtensionDatabase)}`);
             });
         }
     )

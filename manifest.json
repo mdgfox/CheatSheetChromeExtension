@@ -1,6 +1,6 @@
 {
     "name": "Cheat Sheet Extension",
-    "description": "Simlple google chrome extension to solve test.",
+    "description": "Simple google chrome extension to solve test.",
     "version": "1.0.0",
 	"manifest_version": 3,
     "background": {
@@ -10,18 +10,14 @@
     "permissions": ["storage", "activeTab", "scripting"],
     "content_scripts": [
         {
-            "matches": [
-                "<all_urls>"
-            ],
-            "js": ["src/index.js"]
+            "matches": ["<all_urls>"],
+            "js": ["index.js"]
         }
     ],
 "web_accessible_resources": [
         {
             "resources": ["databases/default.json"],
-            "matches": [
-                "<all_urls>"
-            ]
+            "matches": ["<all_urls>"]
         }
     ],
     "action": {
