@@ -1,4 +1,4 @@
-const fileInput = document.getElementById('file_input');
+const fileInput = document.getElementById('file_input') as HTMLInputElement;
 const clearButton = document.getElementById('clear_button');
 
 const mergeNewDatabase = (newJson) => {
@@ -14,7 +14,7 @@ const mergeNewDatabase = (newJson) => {
 }
 
 fileInput.onchange = function() {
-  const selectedFiles = [...fileInput.files];
+  const selectedFiles = Array.from(fileInput.files);
 
   selectedFiles.forEach((file) => {
     if (!file) return;
@@ -22,7 +22,7 @@ fileInput.onchange = function() {
     let reader = new FileReader();
 
     reader.onload = (event) => {
-        mergeNewDatabase(JSON.parse(event.target.result));
+        mergeNewDatabase(JSON.parse(event.target.result as string));
     };
 
     reader.readAsText(file);
