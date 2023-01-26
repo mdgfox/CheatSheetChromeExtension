@@ -5,20 +5,20 @@ module.exports = {
    entry: {
       init: path.resolve(__dirname, "..", "src", "init.ts"),
       index: path.resolve(__dirname, "..", "src", "index.ts"),
-      popup: path.resolve(__dirname, "..", "src", "popup.ts"),
+      popup: path.resolve(__dirname, "..", "src/components", "Popup.tsx"),
    },
    output: {
       path: path.join(__dirname, "../dist"),
       filename: "[name].js",
    },
    resolve: {
-      extensions: [".ts", ".js"],
+      extensions: [".ts", ".tsx", ".js"],
    },
    module: {
       rules: [
          {
             test: /\.tsx?$/,
-            loader: "ts-loader",
+            use: "ts-loader",
             exclude: /node_modules/,
          },
       ],
