@@ -1,3 +1,7 @@
+<p align="center">
+    <img alt="logo" src="https://github.com/mdgfox/CheatSheetChromeExtension/blob/featue/update-icons/public/icons/readme.png?raw=true" width="250">
+</p>
+
 # CheatSheetChromeExtension
 Small Google Chrome extension for passing tests
 
