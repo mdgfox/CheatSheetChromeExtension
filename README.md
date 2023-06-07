@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="logo" src="https://github.com/mdgfox/CheatSheetChromeExtension/blob/featue/update-icons/public/icons/readme.png?raw=true" width="250">
+    <img alt="logo" src="https://github.com/mdgfox/CheatSheetChromeExtension/blob/main/public/icons/readme.png?raw=true" width="250">
 </p>
 
 # CheatSheetChromeExtension
