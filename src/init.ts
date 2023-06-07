@@ -1,3 +1,5 @@
+import { LOCAL_STORE_DATABASE_KEY } from "./types";
+
 chrome.runtime.onInstalled.addListener(() => {
     let url = chrome.runtime.getURL("databases/default.json");
 
@@ -10,7 +12,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
             // Examine the text in the response
             response.json().then(function(cheatSheetExtensionDatabase) {
-                chrome.storage.local.set({ cheatSheetExtensionDatabase }, function() {
+                chrome.storage.local.set({ [LOCAL_STORE_DATABASE_KEY]: cheatSheetExtensionDatabase }, function() {
                     console.log('Default database load successfully.');
                 });
             });

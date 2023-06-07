@@ -4,7 +4,7 @@ module.exports = {
    mode: "production",
    entry: {
       init: path.resolve(__dirname, "..", "src", "init.ts"),
-      index: path.resolve(__dirname, "..", "src", "index.ts"),
+      index: path.resolve(__dirname, "..", "src", "index.tsx"),
       popup: path.resolve(__dirname, "..", "src/components", "Popup.tsx"),
    },
    output: {
@@ -25,7 +25,7 @@ module.exports = {
    },
    plugins: [
       new CopyPlugin({
-         patterns: [{from: ".", to: ".", context: "public"}]
+         patterns: [{from: ".", to: ".", context: "public", globOptions: { ignore: ['**/readme.png'] }}],
       }),
    ],
 };
