@@ -3,14 +3,7 @@
 </p>
 
 # CheatSheetChromeExtension
-Small Google Chrome extension for passing tests
-
-## Publishing guide
-* Archive repository
-* Create & adjust dev account
-* Verify yourself
-* Upload zip file
-More info <a href="https://developer.chrome.com/docs/webstore/publish/" target="_blank">here</a>
+Small Google Chrome extension for passing tests. [Link to Chrome Web Store](https://chrome.google.com/webstore/detail/cheat-sheet-extension/enlhdgahjnhlfjfpkclignnnolokpplp?utm_source=ext_app_menu).
 
 ## Database structure
 Uploaded file should have next structure: 
