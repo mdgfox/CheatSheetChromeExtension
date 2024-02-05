@@ -25,7 +25,7 @@ module.exports = {
    },
    plugins: [
       new CopyPlugin({
-         patterns: [{from: ".", to: ".", context: "public", globOptions: { ignore: ['**/readme.png'] }}],
+         patterns: [{from: ".", to: ".", context: "public", globOptions: { ignore: ['**/readme.png', '**/palette_9.png'] }}],
       }),
    ],
 };
