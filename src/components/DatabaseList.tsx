@@ -29,10 +29,10 @@ export const DatabaseList: React.FC = () => {
     }, [database, setDatabase]);
 
     const subheader = (
-        <ListSubheader sx={{display: 'flex', justifyContent: 'space-between', paddingRight: '0px'}}>
+        <ListSubheader sx={{display: 'flex', justifyContent: 'center', paddingRight: '0px'}}>
             Existing Databases
             <Tooltip title="Upload Databases">
-            <IconButton color="primary" aria-label="upload picture" component="label">
+            <IconButton color="secondary" aria-label="upload picture" component="label">
                 <input
                     onChange={handleImport}
                     type="file"
