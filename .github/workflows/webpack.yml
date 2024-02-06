@@ -26,3 +26,7 @@ jobs:
       run: |
         yarn
         yarn build:prod
+        
+    - name: Vesion Patch
+      run: |
+        yarn version --patch
