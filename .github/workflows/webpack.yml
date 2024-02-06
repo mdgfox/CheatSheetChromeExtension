@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    if: github.event.commits[0].author.name != 'GitHubActions'
     runs-on: ubuntu-latest
 
     strategy:
@@ -26,7 +27,15 @@ jobs:
       run: |
         yarn
         yarn build:prod
-        
+
+    - name: Configure git
+      run: |
+        git config user.name "GitHubActions"
+        git config user.email "<>"
     - name: Vesion Patch
       run: |
         yarn version --patch
+    - name: Update git
+      run: |
+        git push
+        git push --tags
