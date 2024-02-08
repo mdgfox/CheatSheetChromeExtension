@@ -49,6 +49,6 @@ jobs:
     - name: Git Push diff
       run: |
         git add .
-        git commit -m ":thumbsup: Bump up to v$(grep version package.json | awk -F \" '{print $4}')"
+        git commit --amend --no-edit
         git push origin HEAD
       shell: bash
