@@ -1,4 +1,4 @@
-name: NodeJS with Webpack
+name: "Build & versions patch"
 
 on:
   push:
@@ -17,24 +17,35 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-
+  
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-
+  
     - name: Build
       run: |
         yarn
         yarn build:prod
-
+  
     - name: Configure git
       run: |
         git config user.name "GitHubActions"
         git config user.email "<>"
-    - name: Vesion Patch
+    - name: package.json version patch
       run: |
         yarn version --patch
+  
+    - name: Get new version
+      id: get-new-version
+      run: |
+        result=$(npx dot-json@1 package.json version)
+        echo "version=${result}" >> $GITHUB_OUTPUT
+      shell: bash
+        
+    - name: manifest.json vesion patch
+      run: |
+        npx dot-json@1 ./public/manifest.json version "${{ steps.get-new-version.outputs.version }}"
     - name: Update git
       run: |
         git push
