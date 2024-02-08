@@ -1,6 +1,6 @@
 {
   "name": "cheat-sheet-extension",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Small Google Chrome extension for passing tests",
   "author": "Aleksandr Khmelev",
   "keywords": [],
