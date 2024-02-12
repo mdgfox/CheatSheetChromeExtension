@@ -68,6 +68,7 @@ jobs:
       uses: thedoctor0/zip-release@0.7.5
       with:
         type: 'zip'
+        path: ./dist
         filename: release-v{{steps.version-patch.outputs.version}}.zip
         exclusions: '*.git* /*node_modules/* .editorconfig'
 
