@@ -8,8 +8,4 @@ document.body.append(inner);
 
 const root = ReactDOM.createRoot(document.getElementById('cheat-sheet-root')!);
 
-root.render(
-    <React.StrictMode>
-      <AnswerContainer />
-    </React.StrictMode>
-  );
+root.render(<React.StrictMode><AnswerContainer /></React.StrictMode>);

@@ -1,13 +1,13 @@
-import { IconButton, LinearProgress, List, ListItem, ListItemText, ListSubheader, Tooltip } from "@mui/material";
+import {IconButton, LinearProgress, List, ListItem, ListItemText, ListSubheader, Tooltip} from "@mui/material";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import React, { ChangeEvent, useCallback, useMemo } from "react";
 import UploadFileIcon from '@mui/icons-material/UploadFile';
-import { omit } from "lodash";
 import { useDatabase } from "../hooks/useDatabase";
+import {customOmit} from "../utils";
 
 const reader = new FileReader();
 
-export const DatabaseList: React.FC = () => {
+export default function DatabaseList() {
     const {database, setDatabase} = useDatabase();
 
     const handleImport = useCallback((event: ChangeEvent<HTMLInputElement>) => {
@@ -32,21 +32,21 @@ export const DatabaseList: React.FC = () => {
         <ListSubheader sx={{display: 'flex', justifyContent: 'center', paddingRight: '0px'}}>
             Existing Databases
             <Tooltip title="Upload Databases">
-            <IconButton color="secondary" aria-label="upload picture" component="label">
-                <input
-                    onChange={handleImport}
-                    type="file"
-                    accept=".json"
-                    multiple
-                    hidden
-                />
-                <UploadFileIcon/>
-            </IconButton>
-        </Tooltip>
+                <IconButton color="secondary" aria-label="upload picture" component="label">
+                    <input
+                        onChange={handleImport}
+                        type="file"
+                        accept=".json"
+                        multiple
+                        hidden
+                    />
+                    <UploadFileIcon/>
+                </IconButton>
+             </Tooltip>
         </ListSubheader>
     );
 
-    const handleDeleteClick = useCallback((key: string) => setDatabase(omit(database, [key])), [database, setDatabase]);
+    const handleDeleteClick = useCallback((key: string) => setDatabase(customOmit(database, key)), [database, setDatabase]);
 
     const listItems = useMemo(() => {
         const keys = Object.keys(database);
@@ -57,6 +57,7 @@ export const DatabaseList: React.FC = () => {
         return keys.map((key) => (
             <ListItem
                     key={key}
+                    divider={true}
                     secondaryAction={
                         <IconButton edge="end" onClick={() => handleDeleteClick(key)}>
                             <DeleteForeverIcon />
@@ -69,11 +70,8 @@ export const DatabaseList: React.FC = () => {
     }, [database, handleDeleteClick]);
 
     return (
-        <List dense
-            sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-            subheader={subheader}
-        >
+        <List dense sx={{ width: '100%', maxWidth: 360 }} subheader={subheader}>
             {listItems}
         </List>
     );
-};
+}

@@ -3,8 +3,9 @@ import { useCallback, useEffect, useState } from 'react';
 import { RegisteredQuestion } from '../types';
 import { useDatabase } from '../hooks/useDatabase';
 import { findSelectionInDatabase } from '../utils';
+import {Box} from "@mui/material";
 
-export const AnswerContainer: React.FC = () => {
+export default function AnswerContainer() {
     const [display, setDisplay] = useState<'none' | 'block'>('none');
     const [displayText, setDisplayText] = useState('');
 
@@ -37,21 +38,22 @@ export const AnswerContainer: React.FC = () => {
     }, [database, selectionEnd]);
 
     return (
-        <div style={{
-            display: display,
-            position: 'fixed',
-            right: '20px',
-            left: '20px',
-            bottom: '10px',
-            zIndex: '100',
-            fontSize: '12px',
-            borderRadius: '5px',
-            backgroundColor: 'white',
-            color: 'black',
-            padding: '3px',
+        <Box
+            display={display}
+            sx={{
+                position:'fixed',
+                right:'20px',
+                left:'20px',
+                bottom:'10px',
+                zIndex:'100',
+                fontSize: '12px',
+                borderRadius: '5px',
+                padding: '3px',
+                backgroundColor: '#dfe3ee',
+                color: '#363753',
             }}
-        >{displayText}</div>
+        >
+            {displayText}
+        </Box>
     );
-};
-
-export default AnswerContainer;
+}

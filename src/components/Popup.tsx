@@ -7,13 +7,13 @@ import {
     ThemeProvider,
     CssBaseline,
 } from '@mui/material';
-import React, {FC, StrictMode} from 'react';
+import React, { StrictMode } from 'react';
 import {createRoot} from 'react-dom/client';
-import { DatabaseList } from './DatabaseList';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import DatabaseList from "./DatabaseList";
 
-export const Popup: FC = () => {
+function Popup() {
     const isDark = useMediaQuery('(prefers-color-scheme: dark)');
 
     const theme = React.useMemo(() => createTheme({
@@ -106,7 +106,7 @@ export const Popup: FC = () => {
             </Box>
         </ThemeProvider>
     );
-};
+}
 
 const root = createRoot(document.getElementById('root')!);
 

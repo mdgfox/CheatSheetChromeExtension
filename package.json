@@ -1,7 +1,7 @@
 {
   "name": "cheat-sheet-extension",
-  "version": "1.0.8",
-  "description": "Small Google Chrome extension for passing tests",
+  "version": "1.2.0",
+  "description": "Solve the quizzes with a little hint!",
   "author": "Aleksandr Khmelev",
   "keywords": [],
   "license": "MIT",
@@ -25,13 +25,11 @@
     "@emotion/styled": "11.11.0",
     "@mui/icons-material": "5.15.7",
     "@mui/material": "5.15.7",
-    "lodash": "4.17.21",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/chrome": "0.0.260",
-    "@types/lodash": "4.14.202",
     "@types/node": "20.11.16",
     "@types/react": "18.2.53",
     "@types/react-dom": "18.2.18",

@@ -1,24 +1,22 @@
 import { LOCAL_STORE_DATABASE_KEY } from "./types";
 
-chrome.runtime.onInstalled.addListener(() => {
-    let url = chrome.runtime.getURL("databases/default.json");
+chrome.runtime.onInstalled.addListener(async () => {
+    try {
+        const url = chrome.runtime.getURL("databases/default.json");
 
-    fetch(url).then(
-        function(response) {
-            if (response.status !== 200) {
-                console.log('Looks like there was a problem. Status Code: ' + response.status);
-                return;
-            }
+        const response = await fetch(url);
 
-            // Examine the text in the response
-            response.json().then(function(cheatSheetExtensionDatabase) {
-                chrome.storage.local.set({ [LOCAL_STORE_DATABASE_KEY]: cheatSheetExtensionDatabase }, function() {
-                    console.log('Default database load successfully.');
-                });
-            });
+        if (response.status !== 200) {
+            console.error('Oops, something went wrong! Status Code: ' + response.status);
+            return;
         }
-    )
-    .catch(function(err) {
-        console.log('Fetch Error :-S', err);
-    });
+
+        const data = await response.json();
+
+        await chrome.storage.local.set({ [LOCAL_STORE_DATABASE_KEY]: data });
+
+        console.log('Default database load successfully.');
+    } catch(error) {
+        console.error(error);
+    }
 });

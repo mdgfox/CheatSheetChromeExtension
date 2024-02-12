@@ -1,6 +1,6 @@
 {
     "name": "Cheat Sheet Extension",
-    "description": "Simple google chrome extension to solve test.",
+    "description": "Solve the quizzes with a little hint!",
     "version": "1.0.8",
     "manifest_version": 3,
     "background": {
