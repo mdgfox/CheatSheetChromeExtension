@@ -1,0 +1,91 @@
+name: "Release workflow"
+
+on:
+  push:
+    branches: [ "feature/release-publish"]
+
+jobs:
+  build:
+    if: github.event.commits[0].author.name != 'GitHubActions'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v3
+  
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Configure git
+      run: |
+        git config user.name "Automation User"
+        git config user.email "<>"
+
+    - name: package.json version patch
+      id: version-patch
+      run: |
+        yarn version --patch
+        result=$(npx dot-json@1 package.json version)
+        echo "version=${result}" >> $GITHUB_OUTPUT
+      shell: bash
+
+    - name: manifest.json version patch
+      run: |
+        npx dot-json@1 ./public/manifest.json version "${{ steps.version-patch.outputs.version }}"
+
+    - name: Git Push diff
+      run: |
+        git add .
+        git commit --amend --no-edit
+        git push origin HEAD
+        git push --tags
+      shell: bash
+
+    - name: Build
+      run: |
+        yarn
+        yarn build:prod
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-v{{steps.version-patch.outputs.version}}
+        path: dist/
+
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: build-v{{steps.version-patch.outputs.version}}
+    - name: Test artifact download
+      run: ls -R
+
+    - name: Archive build
+      uses: thedoctor0/zip-release@0.7.5
+      with:
+        type: 'zip'
+        filename: release-v{{steps.version-patch.outputs.version}}.zip
+        exclusions: '*.git* /*node_modules/* .editorconfig'
+
+    - name: Create GitHub release
+      id: create-release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.version-patch.outputs.version }}
+        release_name: Release v${{ steps.version-patch.outputs.version }}
+
+    - name: Upload GitHub release asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-release.outputs.upload_url }}
+        asset_path: ./release-v{{steps.version-patch.outputs.version}}.zip
+        asset_name: cheatSheetChromeExtension-v${{steps.version-patch.outputs.version}}.zip
+        asset_content_type: application/zip
