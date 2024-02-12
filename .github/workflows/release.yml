@@ -2,7 +2,7 @@ name: "Release workflow"
 
 on:
   push:
-    branches: [ "feature/release-publish"]
+    branches: ["main"]
 
 jobs:
   build:
