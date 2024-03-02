@@ -6,50 +6,50 @@ import {
     createTheme,
     ThemeProvider,
     CssBaseline,
-} from '@mui/material';
-import React, { StrictMode } from 'react';
-import {createRoot} from 'react-dom/client';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+} from "@mui/material";
+import React, { StrictMode } from "react";
+import {createRoot} from "react-dom/client";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import DatabaseList from "./DatabaseList";
 
 function Popup() {
-    const isDark = useMediaQuery('(prefers-color-scheme: dark)');
+    const isDark = useMediaQuery("(prefers-color-scheme: dark)");
 
     const theme = React.useMemo(() => createTheme({
         palette: {
-            mode: isDark ? 'dark' : 'light',
+            mode: isDark ? "dark" : "light",
         ...(isDark ?
             {
                 // palette values for dark mode
                 primary: {
-                    main: '#363753',
+                    main: "#363753",
                 },
                 secondary: {
-                    main: '#dfe3ee'
+                    main: "#dfe3ee"
                 },
                 background: {
-                    default: '#363753',
-                    paper: '#363753',
+                    default: "#363753",
+                    paper: "#363753",
                 },
                 text: {
-                    primary: '#dfe3ee',
-                    secondary: '#fefefe',
+                    primary: "#dfe3ee",
+                    secondary: "#fefefe",
                 },
             } :
             {
                 // palette values for light mode
                 primary: {
-                    main: '#fefefe',
+                    main: "#fefefe",
                 },
                 secondary: {
-                    main: '#363753'
+                    main: "#363753"
                 },
                 background: {
-                    default: '#fefefe',
+                    default: "#fefefe",
                 },
                 text: {
-                    primary: '#363753',
+                    primary: "#363753",
                 },
             })
         }
@@ -86,13 +86,13 @@ function Popup() {
 
                 <DatabaseList/>
 
-                <Box gap='10px' display='flex' flexDirection='row' flexWrap='nowrap'>
+                <Box gap="10px" display="flex" flexDirection="row" flexWrap="nowrap">
                     <Link
                         target="_blank"
                         rel="noopener"
                         href="https://github.com/mdgfox/CheatSheetChromeExtension"
                     >
-                        <GitHubIcon sx={{color: isDark ? '#fefefe' : 'black'}}/>
+                        <GitHubIcon sx={{color: isDark ? "#fefefe" : "black"}}/>
                     </Link>
 
                     <Link
@@ -100,7 +100,7 @@ function Popup() {
                         rel="noopener"
                         href="https://www.linkedin.com/in/alex-khmelev/"
                     >
-                        <LinkedInIcon sx={{color: isDark ? '#fefefe' : '#0A66C2'}}/>
+                        <LinkedInIcon sx={{color: isDark ? "#fefefe" : "#0A66C2"}}/>
                     </Link>
                 </Box>
             </Box>
@@ -108,6 +108,6 @@ function Popup() {
     );
 }
 
-const root = createRoot(document.getElementById('root')!);
+const root = createRoot(document.getElementById("root")!);
 
 root.render(<StrictMode><Popup /></StrictMode>);

@@ -25,7 +25,7 @@
     "web_accessible_resources": [
         {
             "resources": [
-                "databases/default.json"
+                "databases/LinkedIn.json"
             ],
             "matches": [
                 "<all_urls>"

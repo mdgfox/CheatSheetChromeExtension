@@ -1,7 +1,7 @@
 import {IconButton, LinearProgress, List, ListItem, ListItemText, ListSubheader, Tooltip} from "@mui/material";
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import React, { ChangeEvent, useCallback, useMemo } from "react";
-import UploadFileIcon from '@mui/icons-material/UploadFile';
+import UploadFileIcon from "@mui/icons-material/UploadFile";
 import { useDatabase } from "../hooks/useDatabase";
 import {customOmit} from "../utils";
 
@@ -29,7 +29,7 @@ export default function DatabaseList() {
     }, [database, setDatabase]);
 
     const subheader = (
-        <ListSubheader sx={{display: 'flex', justifyContent: 'center', paddingRight: '0px'}}>
+        <ListSubheader sx={{display: "flex", justifyContent: "center", paddingRight: "0px"}}>
             Existing Databases
             <Tooltip title="Upload Databases">
                 <IconButton color="secondary" aria-label="upload picture" component="label">
@@ -70,7 +70,7 @@ export default function DatabaseList() {
     }, [database, handleDeleteClick]);
 
     return (
-        <List dense sx={{ width: '100%', maxWidth: 360 }} subheader={subheader}>
+        <List dense sx={{ width: "100%", maxWidth: 360 }} subheader={subheader}>
             {listItems}
         </List>
     );

@@ -1,5 +1,5 @@
-const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
+const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
    mode: "production",
    entry: {
@@ -31,9 +31,9 @@ module.exports = {
             context: "public",
             globOptions: {
                ignore: [
-                   '**/readme.png',
-                  '**/palette_9.png',
-                  '**/logoSources',
+                   "**/readme.png",
+                  "**/palette_9.png",
+                  "**/logoSources",
                ]
             }
          }],
