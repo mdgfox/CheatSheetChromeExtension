@@ -11,7 +11,7 @@ export default function AnswerContainer() {
 
     const {database} = useDatabase();
 
-    const printAnswer = useCallback((question: RegisteredQuestion | undefined, timeout = 3000) => {
+    const printAnswer = useCallback((question: RegisteredQuestion | undefined, timeout = 5500) => {
         if(question){
             setDisplayText(question.answer);
             setDisplay("block");
