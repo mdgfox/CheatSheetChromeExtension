@@ -3,15 +3,18 @@
   "version": "1.2.5",
   "description": "Solve the quizzes with a little hint!",
   "author": "Aleksandr Khmelev",
-  "keywords": [],
+  "keywords": [
+    "chrome-extension",
+    "typescript",
+    "webpack",
+    "yarn",
+    "react"
+  ],
   "license": "MIT",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mdgfox/CheatSheetChromeExtension.git"
-  },
-  "bugs": {
-    "url": "https://github.com/mdgfox/CheatSheetChromeExtension/issues"
   },
   "homepage": "https://github.com/mdgfox/CheatSheetChromeExtension#readme",
   "scripts": {
