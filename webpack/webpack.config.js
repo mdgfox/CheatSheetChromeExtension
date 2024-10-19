@@ -32,8 +32,6 @@ module.exports = {
             globOptions: {
                ignore: [
                    "**/readme.png",
-                  "**/palette_9.png",
-                  "**/logoSources",
                ]
             }
          }],
