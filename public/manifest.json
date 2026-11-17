@@ -8,9 +8,7 @@
         "type": "module"
     },
     "permissions": [
-        "storage",
-        "activeTab",
-        "scripting"
+        "storage"
     ],
     "content_scripts": [
         {
